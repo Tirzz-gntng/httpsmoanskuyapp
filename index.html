@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💻 Cyber Tech Mockup</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BODY ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #0A0E1A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Share Tech Mono', monospace;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Background gradient animasi */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, #00BCD4 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, #00838F 0%, transparent 50%),
+                #0A0E1A;
+            animation: bgMove 20s ease-in-out infinite alternate;
+            z-index: 0;
+        }
+
+        @keyframes bgMove {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(2%, -2%) scale(1.05);
+            }
+        }
+
+        /* ===== CONTAINER ===== */
+        .mockup-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* ===== TITLE ===== */
+        .main-title {
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: clamp(24px, 5vw, 48px);
+            color: #00BCD4;
+            text-align: center;
+            text-shadow: 0 0 30px rgba(0, 188, 212, 0.3), 0 0 60px rgba(0, 188, 212, 0.1);
+            letter-spacing: 4px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .main-title span {
+            color: #FFFFFF;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 30px rgba(0, 188, 212, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 60px rgba(0, 188, 212, 0.6), 0 0 120px rgba(0, 188, 212, 0.2);
+            }
+        }
+
+        /* ===== ROW DEVICES ===== */
+        .devices-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+        }
+
+        /* ===== CARD ===== */
+        .device-card {
+            background: rgba(18, 24, 40, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 28px;
+            padding: 24px 24px 30px;
+            border: 1px solid rgba(0, 188, 212, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 188, 212, 0.05);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            width: 100%;
+            max-width: 520px;
+            flex: 1 1 400px;
+        }
+
+        .device-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 60px rgba(0, 188, 212, 0.1);
+        }
+
+        /* ===== DEVICE SCREEN ===== */
+        .screen-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #0D0D0D;
+            border: 2px solid rgba(0, 188, 212, 0.1);
+        }
+
+        .screen-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .device-card:hover .screen-wrapper img {
+            transform: scale(1.02);
+        }
+
+        /* ===== DEVICE LABEL ===== */
+        .device-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 16px;
+            padding: 0 4px;
+        }
+
+        .device-label .name {
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            font-size: 14px;
+            color: #00BCD4;
+            letter-spacing: 1.5px;
+        }
+
+        .device-label .badge {
+            font-size: 10px;
+            color: #8A9BB5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 188, 212, 0.1);
+            background: rgba(0, 188, 212, 0.05);
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== KATA-KATA ===== */
+        .quote-section {
+            margin-top: 16px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            background: rgba(0, 188, 212, 0.03);
+            border-left: 3px solid #00BCD4;
+            transition: background 0.3s ease;
+        }
+
+        .quote-section:hover {
+            background: rgba(0, 188, 212, 0.06);
+        }
+
+        .quote-section .text {
+            font-size: 13px;
+            color: #B0B0B0;
+            line-height: 1.8;
+            font-family: 'Share Tech Mono', monospace;
+            letter-spacing: 0.3px;
+        }
+
+        .quote-section .text .highlight {
+            color: #00BCD4;
+            font-weight: 700;
+        }
+
+        .quote-section .author {
+            margin-top: 8px;
+            font-size: 11px;
+            color: #4DD0E1;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            text-align: right;
+        }
+
+        /* ===== IPHONE SPECIFIC ===== */
+        .iphone-frame {
+            border-radius: 24px;
+            padding: 12px 12px 18px;
+            background: linear-gradient(145deg, #1A1A2E, #0D0D1A);
+            border: 1px solid rgba(0, 188, 212, 0.08);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(0, 188, 212, 0.02);
+        }
+
+        .iphone-frame .screen-wrapper {
+            border-radius: 20px;
+            border: 2px solid rgba(0, 188, 212, 0.08);
+        }
+
+        .iphone-notch {
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 24px;
+            background: #0A0E1A;
+            border-radius: 0 0 16px 16px;
+            z-index: 2;
+            border: 1px solid rgba(0, 188, 212, 0.05);
+            border-top: none;
+        }
+
+        .iphone-notch::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: #1A1A2E;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 188, 212, 0.05);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-text {
+            font-size: 11px;
+            color: #3A4A6A;
+            text-align: center;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', monospace;
+            border-top: 1px solid rgba(0, 188, 212, 0.05);
+            padding-top: 20px;
+            width: 100%;
+        }
+
+        .footer-text span {
+            color: #00BCD4;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .device-card {
+                max-width: 100%;
+                padding: 16px;
+            }
+            .device-label .name {
+                font-size: 12px;
+            }
+            .quote-section .text {
+                font-size: 12px;
+            }
+            .main-title {
+                font-size: 20px;
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .device-card {
+                padding: 12px;
+                border-radius: 20px;
+            }
+            .quote-section {
+                padding: 12px 14px;
+            }
+            .main-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mockup-container">
+
+        <!-- ===== TITLE ===== -->
+        <h1 class="main-title">
+            ⚡ <span>VORCRASH</span> · CYBER DECK
+        </h1>
+
+        <!-- ===== ROW DEVICES ===== -->
+        <div class="devices-row">
+
+            <!-- ===== COMPUTER CARD ===== -->
+            <div class="device-card">
+                <div class="screen-wrapper">
+                    <!-- GANTI src dengan foto komputer lo -->
+                    <img
+                        src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop&crop=center"
+                        alt="Computer Setup"
+                        loading="lazy"
+                    />
+                </div>
+
+                <div class="device-label">
+                    <span class="name">💻 WORKSTATION</span>
+                    <span class="badge">● ONLINE</span>
+                </div>
+
+                <!-- Kata-kata Komputer -->
+                <div class="quote-section">
+                    <div class="text">
+                        "<span class="highlight">Kode</span> adalah senjata.
+                        <span class="highlight">Debug</span> adalah meditasi.
+                        <span class="highlight">Root</span> adalah kebebasan."
+                    </div>
+                    <div class="author">— root@vorcrash</div>
+                </div>
+
+                <div class="quote-section" style="margin-top: 8px;">
+                    <div class="text">
+                        "Di balik layar hitam, <span class="highlight">dunia</span> terbentuk.
+                        Setiap <span class="highlight">byte</span> adalah jejak,
+                        setiap <span class="highlight">line</span> adalah takdir."
+                    </div>
+                    <div class="author">— 0xV0ID</div>
+                </div>
+            </div>
+
+            <!-- ===== IPHONE CARD ===== -->
+            <div class="device-card">
+                <div class="iphone-frame">
+                    <div class="screen-wrapper" style="position: relative;">
+                        <!-- Notch iPhone -->
+                        <div class="iphone-notch"></div>
+                        <!-- GANTI src dengan foto iPhone lo -->
+                        <img
+                            src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=600&fit=crop&crop=center"
+                            alt="iPhone Screen"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                <div class="device-label">
+                    <span class="name">📱 iPHONE · SECURE</span>
+                    <span class="badge">🔒 ENCRYPTED</span>
+                </div>
+
+                <!-- Kata-kata iPhone -->
+                <div class="quote-section">
+                    <div class="text">
+                        "<span class="highlight">Pocket</span> sized power.
+                        <span class="highlight">Zero</span> trust.
+                        <span class="highlight">Full</span> control."
+                    </div>
+                    <div class="author">— mobile@vorcrash</div>
+                </div>
+
+                <div class="quote-section" style="margin-top: 8px;">
+                    <div class="text">
+                        "Dari <span class="highlight">genggaman</span> ke dunia.
+                        Setiap <span class="highlight">notification</span> adalah misi.
+                        Setiap <span class="highlight">tap</span> adalah eksekusi."
+                    </div>
+                    <div class="author">— 0xMOBILE</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer-text">
+            <span>✦</span> VORCRASH PROJECT <span>✦</span> &nbsp;·&nbsp; AES-256 ENCRYPTED &nbsp;·&nbsp; <span>✦</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
